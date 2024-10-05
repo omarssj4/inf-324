@@ -1,0 +1,133 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 04-10-2024 a las 16:08:26
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `bdomar`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `persona`
+--
+
+CREATE TABLE `persona` (
+  `ci` varchar(15) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `paterno` varchar(100) NOT NULL,
+  `materno` varchar(100) NOT NULL,
+  `direccion` varchar(200) NOT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`ci`, `nombre`, `paterno`, `materno`, `direccion`, `telefono`, `email`) VALUES
+('12345678', 'Juan', 'Pérez', 'González', 'Av. Siempre Viva 123', '61123456', 'juan.perez@email.com'),
+('22233445', 'Raúl', 'García', 'Hernández', 'Av. de la Paz 808', '63344556', 'raul.garcia@email.com'),
+('23456789', 'María', 'López', 'Fernández', 'Calle Falsa 456', '62234567', 'maria.lopez@email.com'),
+('33344556', 'Marta', 'Alvarez', 'Fernández', 'Calle de la Luna 909', '64455667', 'marta.alvarez@email.com'),
+('34567890', 'Carlos', 'Martínez', 'García', 'Calle Real 789', '63345678', 'carlos.martinez@email.com'),
+('44455667', 'Víctor', 'Martín', 'López', 'Calle de las Flores 111', '65566778', 'victor.martin@email.com'),
+('45678901', 'Ana', 'Ruiz', 'Díaz', 'Calle de los Olivos 101', '64456789', 'ana.ruiz@email.com'),
+('55566778', 'Julia', 'Muñoz', 'Romero', 'Calle del Mar 222', '66777889', 'julia.munoz@email.com'),
+('56789012', 'José', 'Sánchez', 'Moreno', 'Calle El Sol 202', '65567890', 'jose.sanchez@email.com'),
+('66677889', 'José', 'Vázquez', 'Gómez', 'Calle La Palma 333', '67888990', 'jose.vazquez@email.com'),
+('67890123', 'Laura', 'Hernández', 'Gutiérrez', 'Calle Luna 303', '66789012', 'laura.hernandez@email.com'),
+('77788990', 'Sofía', 'Castro', 'Jiménez', 'Calle del Sol 444', '68999001', 'sofia.castro@email.com'),
+('78901234', 'Pedro', 'Gómez', 'Pérez', 'Calle Estrella 404', '67890123', 'pedro.gomez@email.com'),
+('8316034', 'omar', '', '', 'av. chacaltaya', '61122331', 'omarssj4@gmail.com'),
+('88899001', 'Andrés', 'Morales', 'Ramírez', 'Calle de los Árboles 555', '67000112', 'andres.morales@email.com'),
+('89012345', 'Elena', 'Torres', 'Vázquez', 'Calle 45', '68901234', 'elena.torres@email.com'),
+('90123456', 'Ricardo', 'Jiménez', 'Molina', 'Calle del Río 505', '67012345', 'ricardo.jimenez@email.com'),
+('99900112', 'Isabel', 'Romero', 'López', 'Calle del Río 666', '61111223', 'isabel.romero@email.com');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+CREATE TABLE `catastro` (
+  `cod_catastro` varchar(11) NOT NULL,
+  `distrito` int(11) NOT NULL,
+  `zona` varchar(100) DEFAULT NULL,
+  `Macro_distrito` varchar(200) NOT NULL,
+  `tipo_impuesto` int(11) NOT NULL,
+  `superficie` decimal(10,2) NOT NULL,
+  `valor_catastral` decimal(12,2) NOT NULL,
+  `tipo_propiedad` varchar(50) NOT NULL,
+  `ci` varchar(15) NOT NULL,
+  `fecha_registro` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `catastro`
+--
+
+INSERT INTO `catastro` (`cod_catastro`, `distrito`, `zona`, `Macro_distrito`, `tipo_impuesto`, `superficie`, `valor_catastral`, `tipo_propiedad`, `ci`, `fecha_registro`) VALUES
+('2456', 7, 'Zona 2', 'Max Paredes', 2, 120.75, 200000.00, 'Comercial', '23456789', '2023-02-10'),
+('2843', 9, 'Zona 19', 'Max Paredes', 2, 140.60, 280000.00, 'Comercial', '99900112', '2024-07-15'),
+('2857', 21, 'Zona 15', 'Sur', 1, 110.35, 160000.00, 'Residencial', '55566778', '2024-03-01'),
+('3634', 4, 'Zona 8', 'Cotahuma', 2, 160.55, 280000.00, 'Comercial', '89012345', '2023-08-15'),
+('3798', 11, 'Zona 3', 'Periférica', 3, 180.00, 350000.00, 'Industrial', '34567890', '2023-03-05'),
+('3964', 6, 'Zona 16', 'Mallasa', 2, 150.80, 310000.00, 'Comercial', '66677889', '2024-04-09'),
+('4681', 18, 'Zona 5', 'Sur', 2, 200.00, 400000.00, 'Comercial', '56789012', '2023-05-25'),
+('5017', 8, 'Zona 9', 'Max Paredes', 1, 130.60, 230000.00, 'Residencial', '90123456', '2023-09-05'),
+('6819', 20, 'Zona 12', 'Mallasa', 1, 160.80, 310000.00, 'Residencial', '22233445', '2023-12-15'),
+('7190', 15, 'Zona 14', 'San Antonio', 3, 200.90, 420000.00, 'Industrial', '44455667', '2024-02-03'),
+('7912', 1, 'Zona 7', 'Centro', 1, 110.40, 180000.00, 'Residencial', '78901234', '2023-07-21'),
+('8725', 12, 'Zona 17', 'Periférica', 3, 230.10, 500000.00, 'Industrial', '77788990', '2024-05-13'),
+('9651', 16, 'Zona 18', 'San Antonio', 1, 170.20, 330000.00, 'Residencial', '88899001', '2024-06-25');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `catastro`
+--
+ALTER TABLE `catastro`
+  ADD PRIMARY KEY (`cod_catastro`),
+  ADD KEY `ci` (`ci`);
+
+Estructura de tabla para la tabla `funcionario`
+--
+
+CREATE TABLE `funcionario` (
+  `funcionario_id` int(11) NOT NULL,
+  `nombre_usuario` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `rol` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `funcionario`
+--
+
+INSERT INTO `funcionario` (`funcionario_id`, `nombre_usuario`, `password`, `nombre`, `apellido`, `rol`) VALUES
+(1, 'admin', '1234', 'Juan', 'Pérez', 1),
+(2, 'omar', '123', 'omar', 'mamani', 0),
+(3, 'jose', '12345', 'jose', 'mojica', 0);
+
+
